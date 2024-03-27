@@ -10,9 +10,9 @@ int main(void)
 		push(&head, i);
 	}
 
-	custom_pall(&head);
+	custom_pall(&head, 0);
 
-	pall(&head);
+	pall(&head, 0);
 
 	return (0);
 }

@@ -6,7 +6,7 @@ int main(int argc, char* argv[])
 	int givennumber;
 	FILE *myfile = NULL;
 	char *filename = NULL, montyinstructionstring[16] = "", opcode[18];
-	stack_t** montyds = NULL;
+	stack_t* montyds = NULL;
 
 /*Verifing if the program have been well used like the prototype 
  * said : monty <file> 
@@ -45,15 +45,12 @@ int main(int argc, char* argv[])
 	}
 	printf("LE fichie est ouvert han !\n");
 
-//	while (fscanf(myfile, "%s %d", &montyinstruction, &numbergiven) == 2)
-//	printf("Nous avons : %s qui prend : %d\n", montyinstruction, numbergiven);
-
 	while (fgets(montyinstructionstring, MAX_LENGTH, myfile))
 	{
 		sscanf(montyinstructionstring, "%s %d", &opcode, &givennumber);
-		printf("Instruction: %s | Value : %d\n", opcode, givennumber);
+	//	printf("Instruction: %s | Value : %d\n", opcode, givennumber);
 		
-		get_instruction_func(opcode)(montyds, givennumber);
+		get_instruction_func(opcode)(&montyds, givennumber);
 	}
 	
 
