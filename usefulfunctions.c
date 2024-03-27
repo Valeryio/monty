@@ -13,14 +13,13 @@
 void get_name(char *tmpname, char **filename)
 {
 	/*Getting the name of the file to write a clean code!*/
-	(*filename) = malloc(sizeof(char) * (strlen(tmpname) + 1));
+	*filename = malloc(sizeof(char) * (strlen(tmpname) + 1));
 	if (!(*filename))
 	{
 		printf("Error: malloc failed");
 		exit(EXIT_FAILURE);
 	}
 
-	strcpy((*filename), tmpname);
-	(*filename[strlen(tmpname)]) = '\0';
+	strcpy(*filename, tmpname);
 	printf("That's the name of the file : %s\n", (*filename));
 }
