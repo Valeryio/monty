@@ -8,10 +8,10 @@
  * @n: the data of the node
  * Description: This function adds node
  * to an existing stack.
- * Return: A pointer
+ * Return: Nothing
  */
 
-stack_t* push(stack_t **head, int n)
+void push(stack_t **head, unsigned int n)
 {
 	stack_t* newnode = NULL, *tmpstack = NULL;
 
@@ -30,12 +30,11 @@ stack_t* push(stack_t **head, int n)
 		newnode->next = NULL;
 		newnode->prev = NULL;
 		(*head) = newnode;
-		return (newnode);
+		return;
 	}
 
 /*What is the stack is not empty?*/
 	newnode->prev = NULL;
 	newnode->next = (*head);
-
-	return (newnode);
+	(*head) = newnode;
 }
