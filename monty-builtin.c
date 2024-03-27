@@ -13,7 +13,7 @@
  */
 void push(stack_t **head, unsigned int n)
 {
-	stack_t *newnode = NULL, *tmpstack = NULL;
+	stack_t *newnode = NULL;
 
 	newnode = malloc(sizeof(stack_t));
 	if (!newnode)
@@ -52,7 +52,8 @@ void push(stack_t **head, unsigned int n)
 void pall(stack_t **head, unsigned int i)
 {
 	stack_t *tmpnode = NULL;
-
+	
+	i = i - 1;
 	tmpnode = (*head);
 	while (tmpnode != NULL)
 	{
@@ -75,6 +76,7 @@ void custom_pall(stack_t **head, unsigned int i)
 {
 	stack_t *tmpnode = NULL;
 
+	i = i - 1;
 	tmpnode = (*head);
 	while (tmpnode != NULL)
 	{

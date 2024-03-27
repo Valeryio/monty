@@ -33,13 +33,12 @@ int main(int argc, char *argv[])
 		printf("Error, Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-//	printf("Hey, the file is open right NOW !\n");
 
 
 /*Getting each name of the file, get the variables, and use them*/
 	while (fgets(montyinstructionstring, MAX_LENGTH, myfile))
 	{
-		if (sscanf(montyinstructionstring, "%s %d", &opcode, &givennumber) != 0)
+		if (sscanf(montyinstructionstring, "%s %d", (char*)&opcode, &givennumber) != 0)
 			get_instruction_func(opcode)(&montystack, givennumber);
 	}
 
