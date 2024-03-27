@@ -36,4 +36,9 @@ typedef struct instruction_s
 } instruction_t;
 
 
+stack_t* push(stack_t**, int);
+void pall(stack_t**);
+void custom_pall(stack_t**);
+
+
 #endif
