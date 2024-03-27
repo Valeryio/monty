@@ -2,8 +2,8 @@
 
 /**
  * get_name - this function get the names of a file
- * 
- * @str: the first string
+ *
+ * @tmpname: the first string
  * @filename: the string that will save the name
  * Description: this function swap the value of
  * the name of a file in a more readable variable
@@ -49,7 +49,7 @@ void (*get_instruction_func(char *str))(stack_t**, unsigned int)
 	while (i < 2)
 	{
 		if (!strcmp(montyfunc[i].opcode, str))
-			return montyfunc[i].f;
+			return (montyfunc[i].f);
 		i++;
 	}
 

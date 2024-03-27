@@ -13,7 +13,7 @@
  */
 void push(stack_t **head, unsigned int n)
 {
-	stack_t* newnode = NULL, *tmpstack = NULL;
+	stack_t *newnode = NULL, *tmpstack = NULL;
 
 	newnode = malloc(sizeof(stack_t));
 	if (!newnode)
@@ -42,7 +42,7 @@ void push(stack_t **head, unsigned int n)
 
 /**
  * pall - show all the elements of a stack
- * 
+ *
  * @head: the head of the stack
  * @i: an integer
  * Description: This function shows all the
@@ -63,8 +63,8 @@ void pall(stack_t **head, unsigned int i)
 
 
 /**
- * custom-pall - show all the elements of a stack
- * 
+ * custom_pall - show all the elements of a stack
+ *
  * @head: the head of the stack
  * @i: an integer
  * Description: This function shows all the
