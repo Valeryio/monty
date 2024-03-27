@@ -21,7 +21,7 @@ void get_name(char *tmpname, char **filename)
 	}
 
 	strcpy(*filename, tmpname);
-	printf("That's the name of the file : %s\n", (*filename));
+//	printf("That's the name of the file : %s\n", (*filename));
 }
 
 

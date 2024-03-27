@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 		printf("Error, Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-	printf("Hey, the file is open right NOW !\n");
+//	printf("Hey, the file is open right NOW !\n");
 
 
 /*Getting each name of the file, get the variables, and use them*/
