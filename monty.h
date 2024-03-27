@@ -39,6 +39,7 @@ typedef struct instruction_s
 void push(stack_t**, unsigned int);
 void pall(stack_t**, unsigned int);
 void custom_pall(stack_t**, unsigned int);
+void get_name(char*, char**);
 void (*get_instruction_func(char *str))(stack_t**, unsigned int);
 
 
