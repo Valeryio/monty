@@ -52,7 +52,7 @@ void push(stack_t **head, unsigned int n)
 void pall(stack_t **head, unsigned int i)
 {
 	stack_t *tmpnode = NULL;
-	
+
 	i = i - 1;
 	tmpnode = (*head);
 	while (tmpnode != NULL)
