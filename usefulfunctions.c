@@ -54,3 +54,66 @@ void (*get_instruction_func(char *str))(stack_t**, unsigned int)
 
 	return (NULL);
 }
+
+
+/**
+ * get_arguments - this functions get the two arguments of
+ * monty code
+ *
+ * @line: a string
+ * Description: This function takes a string and save the
+ * monty's code instruction from it
+ * Return: An array of strings
+ */
+char** get_arguments(char *line)
+{
+        int i;
+        char **arguments, *field, *separator;
+
+        i = 0;
+        separator = " \t";
+        arguments = malloc(sizeof(field) * 2);
+        field = strtok(line, separator);
+
+        while (field)
+        {
+                arguments[i] = field;
+                field = strtok(NULL, separator);
+                i++;
+        }
+	return (arguments);
+}
+
+
+/**
+ * line_checker - checks if an instruction's line is valid
+ *
+ * @line: that's the line
+ * @line_number: that is the line number
+ *
+ * Description: This function checks if each line it gets
+ * is a functional monty code instruction
+ * Return: A function
+ */
+
+void line_checker(char *line, unsigned int line_number)
+{
+	int i = 0;
+	char **line_arguments, opcodes[8];
+/*	instruction_t montyfunc[] = {
+					{"push", push},
+					{"pall", pall},
+					{NULL, NULL}
+				};
+*/
+	line_arguments = get_arguments(line);
+	strcpy(opcodes,line_arguments[0]);
+
+	printf("Line number : %d and Heyo ! %s\n",line_number, opcodes);
+	while (line_arguments[i])
+	{
+		printf("HEy l'argument : %s\n", line_arguments[i]);
+		i++;
+	}
+}
+
