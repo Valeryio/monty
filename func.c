@@ -1,0 +1,82 @@
+#include "monty.h"
+/**
+  * _strdup - reallocates the string and copy its value.
+  * @str: string to be reallocated and copies.
+  * Return: end of the program.
+  */
+char *_strdup(char *str)
+{
+	char *cpy;
+	int i;
+
+	cpy = malloc(sizeof(*str));
+	while (str != NULL)
+	{
+		if (cpy == NULL)
+			return (NULL);
+		for (i = 0; str[i] != '\0'; i++)
+			cpy[i] = str[i];
+		cpy[i] = '\0';
+		return (cpy);
+	}
+	return (NULL);
+}
+
+void pus(stack_t **stack, unsigned int line_number)
+{
+	        stack_t *new = malloc(sizeof(stack_t));
+		        if (new == NULL)
+				        {
+						                fprintf(stderr, "Memory allocation failed\n");
+								                exit(EXIT_FAILURE);
+										        }
+			        new->n = line_number;
+				        new->prev = NULL;
+					        new->next = *stack;
+						        if ((*stack) != NULL)
+								                (*stack)->prev = new;
+							        (*stack) = new;
+}
+void pal(stack_t **stack, unsigned int line_number)
+{
+	        stack_t *current = *stack;
+		(void) line_number;
+
+		        printf("Stack contents: ");
+			        while (current != NULL)
+					        {
+							                printf("%d ", current->n);
+									                current = current->next;
+											        }
+				        printf("\n");
+}
+
+void pin(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	printf("Function: pin, Line number: %d\n", line_number);
+}
+
+void po(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	        printf("Function: po, Line number: %d\n", line_number);
+}
+
+void swa(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	        printf("Function: swa, Line number: %d\n", line_number);
+}
+
+void add(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	        printf("Function: add, Line number: %d\n", line_number);
+}
+
+void no(stack_t **stack, unsigned int line_number)
+{
+	        printf("Function: no, Line number: %d\n", line_number);
+	(void) stack;
+}
