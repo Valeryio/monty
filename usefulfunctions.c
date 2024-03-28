@@ -16,7 +16,7 @@ void get_name(char *tmpname, char **filename)
 	*filename = malloc(sizeof(char) * (strlen(tmpname) + 1));
 	if (!(*filename))
 	{
-		printf("Error: malloc failed");
+		fprintf(stderr, "Error: malloc failed");
 		exit(EXIT_FAILURE);
 	}
 
