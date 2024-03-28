@@ -1,37 +1,45 @@
 #include "monty.h"
-stack_t *stack = NULL;
+#define MAX_LENGTH 16
+
 /**
- * main - Entry point to the program.
- * @argc: Numeber of arguments during runtime.
- * @argv: array of string of arguments.
- * Return: End of the program.
+ * main - compile monty code
+ * @argc: the number of args
+ * @argv: different args
+ *
+ * Description: This function interpret monty code and
+ * Return: An integer
  */
+
 int main(int argc, char *argv[])
 {
-	int line_number = 1;
-	char full_command[MAX_LINE];
-	size_t size;
-	FILE *file;
+	int givennumber;
+	FILE *myfile = NULL;
+	stack_t *montystack = NULL;
+	char *filename = NULL, instructionstring[16] = "", opcode[18];
 
-	if (argc != 2)
+/*Verifing if the program have been well used as : monty <file> */
+	if (argc <= 1 || argc > 2)
 	{
-		printf("USAGE: monty file");
+		fprintf(stderr, "USAGE: monty file");
 		exit(EXIT_FAILURE);
 	}
-	file = fopen(argv[1], "r");
-	if (file == NULL)
+	get_name(argv[1], &filename);
+
+/*Try to open the file*/
+	myfile = fopen(filename, "r");
+	if (!myfile)
 	{
-		fprintf(stderr, "Error opening file: %s\n", argv[1]);
+		fprintf(stderr, "Error, Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-	while (fgets(full_command, MAX_LINE, file) != NULL)
+
+/*Getting each line of the file, get the variables, and use them*/
+	while (fgets(instructionstring, MAX_LENGTH, myfile))
 	{
-		size = strlen(full_command);
-		if (size > 0 && full_command[size - 1] == '\n')
-			full_command[size - 1] = '\0';
-		arguments(full_command, line_number);
-		line_number++;
+		if (sscanf(instructionstring, "%s %d", (char *)&opcode, &givennumber) != 0)
+			get_instruction_func(opcode)(&montystack, givennumber);
 	}
-	fclose(file);
+
+	fclose(myfile);
 	return (0);
 }
