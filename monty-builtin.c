@@ -11,7 +11,7 @@
  * to an existing stack.
  * Return: Nothing
  */
-void push(stack_t **head, int n)
+void push(stack_t **head, unsigned int n)
 {
 	stack_t *newnode = NULL;
 
@@ -51,10 +51,11 @@ void push(stack_t **head, int n)
  * node inside a stack
  * Return: nothing
  */
-void pall(stack_t **head)
+void pall(stack_t **head, unsigned int n)
 {
 	stack_t *tmpnode = NULL;
 
+	n = n - 1;
 	tmpnode = (*head);
 	while (tmpnode != NULL)
 	{

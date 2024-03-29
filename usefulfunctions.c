@@ -72,9 +72,9 @@ char** get_arguments(char *line)
  * Return: A function
  */
 
-void line_checker(char *line, unsigned int line_number)
+int line_checker(char *line, unsigned int line_number)
 {
-	int i = 0, j = 0, n = 0;
+	int i = 0, j = 0, n = 0, check = 0;
 	char **line_arguments, line_opcode[16];
 	instruction_t montyfunc[] = {
 					{"push", push},
@@ -87,10 +87,15 @@ void line_checker(char *line, unsigned int line_number)
 	while (line_arguments[j] != NULL)
 		j++;
 	printf("Nombre d'arguments recuperes : %d, ligne [%d]\n", j, line_number);
-	
-dddd/*Verifying the number of arguments I got*/
-	if (j > 2)
-		fprintf(stderr,"En fait, je peux savoir le nombre d'arguments ici : %d\n", j);
+
+	check = args_checker(line_arguments, j);
+	printf("Le check : %d\n", check);
+
+	if (!check)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", (int)line_number);
+		return (0);
+	}
 
 /*Saving these variables into arguments*/
 	strcpy(line_opcode,line_arguments[0]);
@@ -99,7 +104,7 @@ dddd/*Verifying the number of arguments I got*/
 	if (j == 2)
 		n = atoi(line_arguments[1]);
 
-	i = 0;	
+	i = 0;
 	while (i < 2)
 	{
 		printf("Resultat de la comparaison : %d\n", strcmp(line_opcode, montyfunc[i].opcode));
@@ -112,6 +117,8 @@ dddd/*Verifying the number of arguments I got*/
 	}
 
 	printf("Taille de la variable : \"%s\" = [%ld]\n\n", line_opcode, strlen(line_opcode));
+	
+	return (1);
 }
 
 
@@ -127,20 +134,13 @@ dddd/*Verifying the number of arguments I got*/
 
 int args_checker(char* args[], int length)
 {
-/*Check for the line of arguments*/
-	if (length > 2)
-		return (0);
-	
-/*Check for the arguments of push*/
-	if (length == 1 && !(strcmp(args[0], "push")))
-		return (0);
+	length = length - 1;
 
-	
-	if (!(strcmp(args[0], "push") && args[1] == 0))
+	if (!strcmp(args[0], "push") && (atoi(args[1]) == 0))
 		return (0);
 
 /*Check for pall function*/
-	if (!(strcmp(args[0], "pall")) && args[1] != 0)
+	if (!strcmp(args[0], "pall") && (args[1] != 0))
 		return (0);
 
 	return (1);
