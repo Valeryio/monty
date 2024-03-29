@@ -7,7 +7,7 @@
  *
  * Description: This function takes a string and save
  * the monty's code instruction from it. It stores each
- * arguments, the opcode and the number (or not) in an 
+ * arguments, the opcode and the number (or not) in an
  * array of character that is sent
  *
  * Return: An array of strings
@@ -17,22 +17,22 @@
  * | arguments[1] | str(int)) |
  * -------------- -------------
  */
-char** get_arguments(char *line)
+char **get_arguments(char *line)
 {
-        int i;
-        char **arguments, *field, *separator;
+	int i;
+	char **arguments, *field, *separator;
 
-        i = 0;
-        separator = " \t\n";
-        arguments = malloc(sizeof(field) * 2);
-        field = strtok(line, separator);
+	i = 0;
+	separator = " \t\n";
+	arguments = malloc(sizeof(field) * 2);
+	field = strtok(line, separator);
 
-        while (field)
-        {
-                arguments[i] = field;
-                field = strtok(NULL, separator);
-                i++;
-        }
+	while (field)
+	{
+		arguments[i] = field;
+		field = strtok(NULL, separator);
+		i++;
+	}
 	return (arguments);
 }
 
@@ -52,20 +52,14 @@ int line_checker(char *line, unsigned int line_number)
 {
 	int i = 0, j = 0, n = 0, check = 0;
 	char **line_arguments, line_opcode[16];
-	instruction_t montyfunc[] = {
-					{"push", push},
-					{"pall", pall},
-					{NULL, NULL}
-				};
+	instruction_t montyfunc[] = {{"push", push}, {"pall", pall}, {NULL, NULL}};
 
 	line_arguments = get_arguments(line);
 
 	while (line_arguments[j] != NULL)
 		j++;
-/*	printf("Nombre d'arguments recuperes : %d, ligne [%d]\n", j, line_number);*/
 
 	check = args_checker(line_arguments, j);
-/*	printf("Le check : %d\n", check);*/
 
 	if (!check)
 	{
@@ -74,7 +68,7 @@ int line_checker(char *line, unsigned int line_number)
 	}
 
 /*Saving these variables into arguments*/
-	strcpy(line_opcode,line_arguments[0]);
+	strcpy(line_opcode, line_arguments[0]);
 
 /*Getting the second ones*/
 	if (j == 2)
@@ -83,7 +77,6 @@ int line_checker(char *line, unsigned int line_number)
 	i = 0;
 	while (i < 2)
 	{
-/*		printf("Resultat de la comparaison : %d\n", strcmp(line_opcode, montyfunc[i].opcode));*/
 		if (strcmp(line_opcode, montyfunc[i].opcode) == 0)
 		{
 			montyfunc[i].f((&montystack), n);
@@ -91,9 +84,6 @@ int line_checker(char *line, unsigned int line_number)
 		}
 		i++;
 	}
-
-/*	printf("Taille de la variable : \"%s\" = [%ld]\n\n", line_opcode, strlen(line_opcode));*/
-	
 	return (1);
 }
 
@@ -108,7 +98,7 @@ int line_checker(char *line, unsigned int line_number)
  * Return: 1 on success, 0 otherwise
  */
 
-int args_checker(char* args[], int length)
+int args_checker(char *args[], int length)
 {
 	length = length - 1;
 

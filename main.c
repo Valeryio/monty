@@ -2,7 +2,7 @@
 #define MAX_LENGTH 2048
 
 stack_t *montystack = NULL;
-	
+
 /**
  * main - compile monty code
  * @argc: the number of args
