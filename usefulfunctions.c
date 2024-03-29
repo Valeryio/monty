@@ -71,7 +71,7 @@ char** get_arguments(char *line)
         char **arguments, *field, *separator;
 
         i = 0;
-        separator = " \t";
+        separator = " \t\n";
         arguments = malloc(sizeof(field) * 2);
         field = strtok(line, separator);
 
@@ -96,48 +96,52 @@ char** get_arguments(char *line)
  * Return: A function
  */
 
-void line_checker(char **montystack, char *line, unsigned int line_number)
+void line_checker(char *line, unsigned int line_number)
 {
-	int i = 0, j = 0, n;
-	stack_t *montystack = NULL;
-	char **line_arguments, opcodes[8];
+	int i = 0, j = 0, n = 0;
+	char **line_arguments, line_opcode[16];
 	instruction_t montyfunc[] = {
 					{"push", push},
 					{"pall", pall},
 					{NULL, NULL}
 				};
-/*Verifying the number of arguments I got*/
-	if (j >= 2)
-		fprintf(stderr,"En fait, je peux savoir le nombre d'arguments ici : %d\n", j);
-/*Saving these variables into arguments*/
+
 	line_arguments = get_arguments(line);
-	strcpy(opcodes,line_arguments[0]);
+
+	while (line_arguments[j] != NULL)
+		j++;
+	printf("Nombre d'arguments recuperes : %d, ligne [%d]\n", j, line_number);
+	
+	while (line_arguments[i])
+	{
+		printf("ARGUMENT [%d] : %s\n", i + 1, line_arguments[i]);
+		i++;
+	}
+
+
+/*Verifying the number of arguments I got*/
+	if (j > 2)
+		fprintf(stderr,"En fait, je peux savoir le nombre d'arguments ici : %d\n", j);
+
+/*Saving these variables into arguments*/
+	strcpy(line_opcode,line_arguments[0]);
+
 /*Getting the second ones*/
 	if (j == 2)
 		n = atoi(line_arguments[1]);
 
-	while (line_arguments[j] != NULL)
-		j++;
-
-	printf("En fait, je peux savoir le nombre d'arguments ici : %d\n", j);
-
-	printf("Line number : %d and Heyo ! %s\n",line_number, opcodes);
-	
+	i = 0;	
 	while (i < 2)
 	{
-		if (strcmp(opcodes, montyfunc[i].opcode) == 0)
+		printf("Resultat de la comparaison : %d\n", strcmp(line_opcode, montyfunc[i].opcode));
+		if (strcmp(line_opcode, montyfunc[i].opcode) == 0)
 		{
-			montyfunc[i].f((*montystack), n);
+			montyfunc[i].f((&montystack), n);
+			break;
 		}
-	}
-	
-	i = 0;	
-	while (line_arguments[i])
-	{
-		printf("HEy l'argument : %s\n", line_arguments[i]);
 		i++;
 	}
-
-	printf("On a tel nombre d'arguments sur la ligne : %d\n", i);
+	
+	printf("Taille de la variable : \"%s\" = [%ld]\n\n", line_opcode, strlen(line_opcode));
 }
 

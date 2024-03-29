@@ -40,13 +40,12 @@ typedef struct instruction_s
  */
 extern stack_t *montystack;
 
-
 void push(stack_t**, unsigned int);
 void pall(stack_t**, unsigned int);
 void custom_pall(stack_t**, unsigned int);
 void get_name(char*, char**);
 char** get_arguments(char*);
-void line_checker(char **, char *line, unsigned int line_number);
+void line_checker(char *line, unsigned int line_number);
 void (*get_instruction_func(char *str))(stack_t**, unsigned int);
 
 

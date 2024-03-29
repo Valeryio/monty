@@ -1,6 +1,8 @@
 #include "monty.h"
 #define MAX_LENGTH 2048
 
+stack_t *montystack = NULL;
+	
 /**
  * main - compile monty code
  * @argc: the number of args
@@ -16,7 +18,6 @@ int main(int argc, char *argv[])
 	unsigned int line_number = 1;
 	FILE *myfile = NULL;
 	char instructionstring[2048] = "";
-	stack_t *montystack = NULL;
 /*	stack_t *montystack = NULL;
 	char instructionstring[2048] = "", opcode[18];
 */
@@ -45,7 +46,7 @@ int main(int argc, char *argv[])
 /*		if (sscanf(instructionstring, "%s %d", (char *)&opcode, &givennumber) != 0)
 			get_instruction_func(opcode)(&montystack, givennumber);
 */
-		line_checker(&montystack, instructionstring, line_number);
+		line_checker(instructionstring, line_number);
 		line_number++;
 	}
 
