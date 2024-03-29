@@ -11,7 +11,7 @@
  * to an existing stack.
  * Return: Nothing
  */
-void push(stack_t **head, unsigned int n)
+void push(stack_t **head, int n)
 {
 	stack_t *newnode = NULL;
 
@@ -45,16 +45,16 @@ void push(stack_t **head, unsigned int n)
  * pall - show all the elements of a stack
  *
  * @head: the head of the stack
- * @i: an integer
+ * @n: an integer
+ * @line_number: the line number
  * Description: This function shows all the
  * node inside a stack
  * Return: nothing
  */
-void pall(stack_t **head, unsigned int i)
+void pall(stack_t **head)
 {
 	stack_t *tmpnode = NULL;
 
-	i = i - 1;
 	tmpnode = (*head);
 	while (tmpnode != NULL)
 	{

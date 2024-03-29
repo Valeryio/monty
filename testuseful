@@ -1,6 +1,30 @@
 #include "monty.h"
 
 /**
+ * get_name - this function get the names of a file
+ *
+ * @tmpname: the first string
+ * @filename: the string that will save the name
+ * Description: this function swap the value of
+ * the name of a file in a more readable variable
+ * Return: Nothing
+ */
+
+void get_name(char *tmpname, char **filename)
+{
+	/*Getting the name of the file to write a clean code!*/
+	*filename = malloc(sizeof(char) * (strlen(tmpname) + 1));
+	if (!(*filename))
+	{
+		fprintf(stderr, "Error: malloc failed");
+		exit(EXIT_FAILURE);
+	}
+
+	strcpy(*filename, tmpname);
+}
+
+
+/**
  * get_instruction_func - get an instruction by a function
  *
  * @str: a string
@@ -88,7 +112,14 @@ void line_checker(char *line, unsigned int line_number)
 		j++;
 	printf("Nombre d'arguments recuperes : %d, ligne [%d]\n", j, line_number);
 	
-dddd/*Verifying the number of arguments I got*/
+	while (line_arguments[i])
+	{
+		printf("ARGUMENT [%d] : %s\n", i + 1, line_arguments[i]);
+		i++;
+	}
+
+
+/*Verifying the number of arguments I got*/
 	if (j > 2)
 		fprintf(stderr,"En fait, je peux savoir le nombre d'arguments ici : %d\n", j);
 
@@ -110,38 +141,7 @@ dddd/*Verifying the number of arguments I got*/
 		}
 		i++;
 	}
-
+	
 	printf("Taille de la variable : \"%s\" = [%ld]\n\n", line_opcode, strlen(line_opcode));
 }
 
-
-/**
- * args_checker - check each arguments of a monty's line
- * @args: a array of args
- * @length: the length of the arrray
- *
- * Description: This function check each args of a line
- * and send its result
- * Return: 1 on SUCCESS, 0 if not
- */
-
-int args_checker(char* args[], int length)
-{
-/*Check for the line of arguments*/
-	if (length > 2)
-		return (0);
-	
-/*Check for the arguments of push*/
-	if (length == 1 && !(strcmp(args[0], "push")))
-		return (0);
-
-	
-	if (!(strcmp(args[0], "push") && args[1] == 0))
-		return (0);
-
-/*Check for pall function*/
-	if (!(strcmp(args[0], "pall")) && args[1] != 0)
-		return (0);
-
-	return (1);
-}
