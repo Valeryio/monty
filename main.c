@@ -15,10 +15,11 @@ int main(int argc, char *argv[])
 /*	int givennumber ;*/
 	unsigned int line_number = 1;
 	FILE *myfile = NULL;
+	char instructionstring[2048] = "";
+	stack_t *montystack = NULL;
 /*	stack_t *montystack = NULL;
 	char instructionstring[2048] = "", opcode[18];
 */
-	char instructionstring[2048] = "";
 
 /*Verifing if the program have been well used as : monty <file> */
 	if (argc <= 1 || argc > 2)
@@ -27,6 +28,8 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
+	if (montystack != NULL)
+		printf("YES NOT NULL!");
 
 /*Try to open the file*/
 	myfile = fopen(argv[1], "r");
@@ -42,7 +45,7 @@ int main(int argc, char *argv[])
 /*		if (sscanf(instructionstring, "%s %d", (char *)&opcode, &givennumber) != 0)
 			get_instruction_func(opcode)(&montystack, givennumber);
 */
-		line_checker(instructionstring, line_number);
+		line_checker(&montystack, instructionstring, line_number);
 		line_number++;
 	}
 

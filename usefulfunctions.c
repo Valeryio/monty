@@ -96,24 +96,48 @@ char** get_arguments(char *line)
  * Return: A function
  */
 
-void line_checker(char *line, unsigned int line_number)
+void line_checker(char **montystack, char *line, unsigned int line_number)
 {
-	int i = 0;
+	int i = 0, j = 0, n;
+	stack_t *montystack = NULL;
 	char **line_arguments, opcodes[8];
-/*	instruction_t montyfunc[] = {
+	instruction_t montyfunc[] = {
 					{"push", push},
 					{"pall", pall},
 					{NULL, NULL}
 				};
-*/
+/*Verifying the number of arguments I got*/
+	if (j >= 2)
+		fprintf(stderr,"En fait, je peux savoir le nombre d'arguments ici : %d\n", j);
+/*Saving these variables into arguments*/
 	line_arguments = get_arguments(line);
 	strcpy(opcodes,line_arguments[0]);
+/*Getting the second ones*/
+	if (j == 2)
+		n = atoi(line_arguments[1]);
+
+	while (line_arguments[j] != NULL)
+		j++;
+
+	printf("En fait, je peux savoir le nombre d'arguments ici : %d\n", j);
 
 	printf("Line number : %d and Heyo ! %s\n",line_number, opcodes);
+	
+	while (i < 2)
+	{
+		if (strcmp(opcodes, montyfunc[i].opcode) == 0)
+		{
+			montyfunc[i].f((*montystack), n);
+		}
+	}
+	
+	i = 0;	
 	while (line_arguments[i])
 	{
 		printf("HEy l'argument : %s\n", line_arguments[i]);
 		i++;
 	}
+
+	printf("On a tel nombre d'arguments sur la ligne : %d\n", i);
 }
 

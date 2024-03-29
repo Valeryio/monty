@@ -35,13 +35,18 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/*
+ * @montystack: The extern variable used
+ */
+extern stack_t *montystack;
+
 
 void push(stack_t**, unsigned int);
 void pall(stack_t**, unsigned int);
 void custom_pall(stack_t**, unsigned int);
 void get_name(char*, char**);
 char** get_arguments(char*);
-void line_checker(char *line, unsigned int line_number);
+void line_checker(char **, char *line, unsigned int line_number);
 void (*get_instruction_func(char *str))(stack_t**, unsigned int);
 
 
