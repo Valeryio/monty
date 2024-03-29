@@ -27,7 +27,6 @@ void push(stack_t **head, unsigned int n)
 /*In this case where the stack is empty!*/
 	if (!(*head))
 	{
-		printf("La stack est nulle !");
 		newnode->next = NULL;
 		newnode->prev = NULL;
 		(*head) = newnode;

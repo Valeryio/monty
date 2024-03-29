@@ -1,13 +1,21 @@
 #include "monty.h"
 
 /**
- * get_arguments - this functions get the two arguments of
- * monty code
+ * get_arguments - get the two arguments of monty code
  *
  * @line: a string
- * Description: This function takes a string and save the
- * monty's code instruction from it
+ *
+ * Description: This function takes a string and save
+ * the monty's code instruction from it. It stores each
+ * arguments, the opcode and the number (or not) in an 
+ * array of character that is sent
+ *
  * Return: An array of strings
+ * -------------- -------------
+ * | arguments[0] | *opcode   |
+ * -------------- -------------
+ * | arguments[1] | str(int)) |
+ * -------------- -------------
  */
 char** get_arguments(char *line)
 {
@@ -37,7 +45,7 @@ char** get_arguments(char *line)
  *
  * Description: This function checks if each line it gets
  * is a functional monty code instruction
- * Return: A function
+ * Return: 1 on success 0 otherwise
  */
 
 int line_checker(char *line, unsigned int line_number)
@@ -54,10 +62,10 @@ int line_checker(char *line, unsigned int line_number)
 
 	while (line_arguments[j] != NULL)
 		j++;
-	printf("Nombre d'arguments recuperes : %d, ligne [%d]\n", j, line_number);
+/*	printf("Nombre d'arguments recuperes : %d, ligne [%d]\n", j, line_number);*/
 
 	check = args_checker(line_arguments, j);
-	printf("Le check : %d\n", check);
+/*	printf("Le check : %d\n", check);*/
 
 	if (!check)
 	{
@@ -75,7 +83,7 @@ int line_checker(char *line, unsigned int line_number)
 	i = 0;
 	while (i < 2)
 	{
-		printf("Resultat de la comparaison : %d\n", strcmp(line_opcode, montyfunc[i].opcode));
+/*		printf("Resultat de la comparaison : %d\n", strcmp(line_opcode, montyfunc[i].opcode));*/
 		if (strcmp(line_opcode, montyfunc[i].opcode) == 0)
 		{
 			montyfunc[i].f((&montystack), n);
@@ -84,7 +92,7 @@ int line_checker(char *line, unsigned int line_number)
 		i++;
 	}
 
-	printf("Taille de la variable : \"%s\" = [%ld]\n\n", line_opcode, strlen(line_opcode));
+/*	printf("Taille de la variable : \"%s\" = [%ld]\n\n", line_opcode, strlen(line_opcode));*/
 	
 	return (1);
 }
@@ -97,7 +105,7 @@ int line_checker(char *line, unsigned int line_number)
  *
  * Description: This function check each args of a line
  * and send its result
- * Return: 1 on SUCCESS, 0 if not
+ * Return: 1 on success, 0 otherwise
  */
 
 int args_checker(char* args[], int length)
