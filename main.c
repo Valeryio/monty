@@ -36,9 +36,6 @@ int main(int argc, char *argv[])
 /*Getting each line of the file, get the variables, and use them*/
 	while (fgets(instructionstring, MAX_LENGTH, myfile))
 	{
-/*		if (sscanf(instructionstring, "%s %d", (char *)&opcode, &givennumber) != 0)
-			get_instruction_func(opcode)(&montystack, givennumber);
-*/
 		if (!line_checker(instructionstring, line_number))
 			exit(EXIT_FAILURE);
 
