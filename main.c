@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 	myfile = fopen(argv[1], "r");
 	if (!myfile)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		fprintf(stderr, "Error Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 
@@ -37,8 +37,10 @@ int main(int argc, char *argv[])
 	while (fgets(instructionstring, MAX_LENGTH, myfile))
 	{
 		if (line_checker(instructionstring, line_number) == 0)
+		{
+			printf("PB ligne : %d\n", line_number);
 			exit(EXIT_FAILURE);
-
+		}
 		line_number++;
 	}
 

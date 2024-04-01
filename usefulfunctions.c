@@ -56,7 +56,7 @@ char **get_arguments(char *line)
 
 int line_checker(char *line, unsigned int line_number)
 {
-	int i = 0, j = 0, n = 0, check = 0;
+	int i = 0, numofargs = 0, n = 0, check = 0, existfunction = 0;
 	char **line_arguments, line_opcode[16];
 	instruction_t montyfunc[] = {{"push", push}, {"pall", pall}, {"pint", pint}, {NULL, NULL}};
 
@@ -67,14 +67,27 @@ int line_checker(char *line, unsigned int line_number)
 	if (!line_arguments)
 		return (-1);
 
-	while (line_arguments[j] != NULL)
+/*Getting the number of arguments of the line*/
+	while (line_arguments[numofargs] != NULL)
 	{
-		printf("Un argument : %s\n", line_arguments[j]);
-		j++;
+		printf("Un argument : %s\n", line_arguments[numofargs]);
+		numofargs++;
 	}
 
-	check = args_checker(line_arguments, j);
+/*Verify that we know the used function*/
+	while (i < 4)
+	{
+		if (strcmp(montyfunc[i].opcode, line_arguments[0]) == 0)
+		{
+			existfunction = 1;
+			break;
+		}
+		i++;
+	}
+	if (!existfunction)
+		return (0);
 
+	check = args_checker(line_arguments, numofargs);
 	printf("VOici le check : %d\n", check);
 
 	if (!check)
@@ -87,7 +100,7 @@ int line_checker(char *line, unsigned int line_number)
 	strcpy(line_opcode, line_arguments[0]);
 
 /*Getting the second ones*/
-	if (j == 2)
+	if (numofargs == 2)
 		n = atoi(line_arguments[1]);
 
 	i = 0;
@@ -116,6 +129,7 @@ int line_checker(char *line, unsigned int line_number)
 
 int args_checker(char *args[], int length)
 {
+
 /*	length = length - 1;
 */
 	printf("JE suis la et ma taille est : %d\n", length);
