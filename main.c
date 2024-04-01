@@ -29,14 +29,14 @@ int main(int argc, char *argv[])
 	myfile = fopen(argv[1], "r");
 	if (!myfile)
 	{
-		fprintf(stderr, "Error, Can't open file %s\n", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 
 /*Getting each line of the file, get the variables, and use them*/
 	while (fgets(instructionstring, MAX_LENGTH, myfile))
 	{
-		if (!line_checker(instructionstring, line_number))
+		if (line_checker(instructionstring, line_number) == 0)
 			exit(EXIT_FAILURE);
 
 		line_number++;

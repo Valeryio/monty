@@ -27,6 +27,12 @@ char **get_arguments(char *line)
 	arguments = malloc(sizeof(field) * 2);
 	field = strtok(line, separator);
 
+	printf("BOn, voici le truc : %s\n", field);
+
+/* When we get an empty line send a null*/
+	if (!field)
+		return (NULL);
+
 	while (field)
 	{
 		arguments[i] = field;
@@ -52,14 +58,24 @@ int line_checker(char *line, unsigned int line_number)
 {
 	int i = 0, j = 0, n = 0, check = 0;
 	char **line_arguments, line_opcode[16];
-	instruction_t montyfunc[] = {{"push", push}, {"pall", pall}, {NULL, NULL}};
+	instruction_t montyfunc[] = {{"push", push}, {"pall", pall}, {"pint", pint}, {NULL, NULL}};
 
 	line_arguments = get_arguments(line);
 
+	printf("\nJ'AI RECU CETTE LIGNE : %d\n\n", line_number);
+/*Ignore when the line is empty*/
+	if (!line_arguments)
+		return (-1);
+
 	while (line_arguments[j] != NULL)
+	{
+		printf("Un argument : %s\n", line_arguments[j]);
 		j++;
+	}
 
 	check = args_checker(line_arguments, j);
+
+	printf("VOici le check : %d\n", check);
 
 	if (!check)
 	{
@@ -100,8 +116,13 @@ int line_checker(char *line, unsigned int line_number)
 
 int args_checker(char *args[], int length)
 {
-	length = length - 1;
+/*	length = length - 1;
+*/
+	printf("JE suis la et ma taille est : %d\n", length);
 
+/*Check for bad entry for push*/
+	if (!strcmp(args[0], "push") && (length == 1))
+		return (0);
 	if (!strcmp(args[0], "push") && (atoi(args[1]) == 0))
 		return (0);
 
