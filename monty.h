@@ -40,6 +40,7 @@ typedef struct instruction_s
  */
 extern stack_t *montystack;
 
+void freestack(stack_t**);
 char** get_arguments(char*);
 int args_checker(char **, int);
 void push(stack_t**, unsigned int);
