@@ -50,18 +50,24 @@ char **getArguments(char *line)
  * Return: An integer
  */
 
-int isValidArgument()
+int isValidArgument(unsigned int line_number)
 {
-	int i = 0;
+	int i = 0, known_arg = 0;
 	char *montyinstructions[] = {"push", "pall", "pint", "NULL"};
 
 	while (montyinstructions[i])
 	{
 		if (strcmp(montyinstructions[i], montyline_args[0]) == 0)
-			return (1);
+			known_arg = 1;
 		i++;
 	}
-	printf("La chaine %s est inconnue\n", montyline_args[0]);
+
+	if (!known_arg)
+	{
+		printf("L%d: unkown instruction <%s>\n", line_number, montyline_args[0]);
+		exit(EXIT_FAILURE);
+	}
+
 	return (0);
 }
 
