@@ -46,6 +46,7 @@ char** getArguments(char*);
 int args_checker(char **, int);
 int isValidArgument();
 int getNumberOfArgs();
+void executeLineInstruction(stack_t**, unsigned int);
 
 void f_push(stack_t**, unsigned int);
 void push(stack_t**, int);

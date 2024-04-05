@@ -9,31 +9,14 @@
  * top of a stack
  * Return: Nothing
  */
-/*
+
 void f_push(stack_t **head, unsigned int line_number)
 {
-	printf("%d\n", line_number);
-	int numbofargs = 0;
-	char *current_line = NULL, **line_arguments;
-
-	strcpy(current_line, montyline);
-*/
-/*Getting the different elements of the line*/
-/*	line_arguments = get_arguments(current_line);
-
-	printf("\nJ'AI RECU CETTE LIGNE : %d\n\n", line_number);
-*/
-/*Getting the number of arguments of the line*/
-/*	while (line_arguments[numbofargs] != NULL)
+	if (atoi(montyline_args[1]) == 0)
 	{
-		printf("Un argument : %s\n", line_arguments[numbofargs]);
-		numbofargs++;
-	}
-	if ((numbofargs < 2))
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", (int)line_number);
-		return;
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
 	}
 
-	push(&(*head), atoi(line_arguments[1]));
-}*/
+	push(&(*head), atoi(montyline_args[1]));
+}
