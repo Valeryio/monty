@@ -46,21 +46,22 @@ int main(int argc, char *argv[])
 		if (arg_number == 0)
 		{
 			line_number++;
+			printf("La ligne est vide\n");
 			continue;
+		}
+/*Verification of the validity of the opcode*/
+		right_arg = isValidArgument();
+
+		if (!right_arg)
+		{
+			printf("L<%d>: unknown instruction <%s>\n", line_number, montyline_args[0]);
+			exit(EXIT_FAILURE);
 		}
 
 		if (arg_number == 2)
-			printf("Le nombre d'argument sur cette ligne est : %d\n", right_arg);
+			printf("Le nombre d'argument sur cette ligne est : %d et %d\n", right_arg, arg_number);
 		else if (arg_number == 1)
 			printf("IL n'y a qu'un seul argument sur la liste %s\n", montyline_args[0]);
-	/*	while (i < 3)
-		{
-			if (strcmp(montyinstructions[i].opcode, line_arguments[0]) == 0)
-			{
-				right_arg = 1;
-				break;
-			}
-		}*/
 /*Verify if the right argument exist*/
 /*
 		if (!right_arg)

@@ -44,7 +44,7 @@ extern char **montyline_args;
 void freestack(stack_t**);
 char** getArguments(char*);
 int args_checker(char **, int);
-int arg_detector(char*);
+int isValidArgument();
 int getNumberOfArgs();
 
 void f_push(stack_t**, unsigned int);

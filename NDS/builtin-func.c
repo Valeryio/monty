@@ -50,12 +50,18 @@ char **getArguments(char *line)
  * Return: An integer
  */
 
-int arg_detector(char *str)
+int isValidArgument()
 {
-/*	int rightarg = 0;
+	int i = 0;
 	char *montyinstructions[] = {"push", "pall", "pint", "NULL"};
-*/
-	printf("%s\n", str);
+
+	while (montyinstructions[i])
+	{
+		if (strcmp(montyinstructions[i], montyline_args[0]) == 0)
+			return (1);
+		i++;
+	}
+	printf("La chaine %s est inconnue\n", montyline_args[0]);
 	return (0);
 }
 
