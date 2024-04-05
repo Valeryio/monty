@@ -41,7 +41,7 @@ typedef struct instruction_s
 extern stack_t *montystack;
 extern char **montyline_args;
 
-void freestack(stack_t**);
+void freeStack(stack_t**);
 char** getArguments(char*);
 int args_checker(char **, int);
 int isValidArgument();

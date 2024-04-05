@@ -12,11 +12,12 @@
 
 void f_push(stack_t **head, unsigned int line_number)
 {
-	if (atoi(montyline_args[1]) == 0)
+	if ((getNumberOfArgs() < 2) || (atoi(montyline_args[1]) == 0))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
+	printf("NOmbre d'arguments sur la ligne : %d\n", getNumberOfArgs());
 	push(&(*head), atoi(montyline_args[1]));
 }

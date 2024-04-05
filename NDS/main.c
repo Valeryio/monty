@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 	/*int i = 0;*/
 	unsigned int line_number = 1, arg_number = 0, right_arg = 0;
 	FILE *myfile = NULL;
-	/*stack_t *head = NULL;*/
+	stack_t *head = NULL;
 	char instructionstring[2048] = ""/*, **line_arguments = NULL*/;
 /*	instruction_t montyinstructions[] = {{"push", f_push}, {"pall", f_pall}, {"NULL", NULL}};
 */
@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 	myfile = fopen(argv[1], "r");
 	if (!myfile)
 	{
-		fprintf(stderr, "Error Can't open file %s\n", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 
@@ -57,7 +57,9 @@ int main(int argc, char *argv[])
 			printf("L<%d>: unknown instruction <%s>\n", line_number, montyline_args[0]);
 			exit(EXIT_FAILURE);
 		}
-
+		printf("La ligne n'est pas vide, alors, continuons !\n");
+		executeLineInstruction(&head, line_number);
+		line_number++;
 /*	
 		if (arg_number == 2)
 			printf("Le nombre d'argument sur cette ligne est : %d et %d\n", right_arg, arg_number);
