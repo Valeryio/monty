@@ -23,17 +23,19 @@ int main(int argc, char *argv[])
 	/*Verifing if the program have been well used as : monty <file> */
 	if (argc <= 1 || argc > 2)
 	{
-		fprintf(stderr, "USAGE: monty file");
+		UsageFileError();
+/*		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
-	}
+*/	}
 
 /*Try to open the file*/
 	myfile = fopen(argv[1], "r");
 	if (!myfile)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		OpenFileError(argv[1]);
+/*		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
-	}
+*/	}
 
 /*Getting each line of the file, get the variables, and use them*/
 	while (fgets(instructionstring, MAX_LENGTH, myfile))

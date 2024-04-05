@@ -38,14 +38,13 @@ typedef struct instruction_s
 /*
  * @montystack: The extern variable used
  */
-extern stack_t *montystack;
 extern char **montyline_args;
 
+int getNumberOfArgs();
 void freeStack(stack_t**);
 char** getArguments(char*);
 int args_checker(char **, int);
 int isValidArgument(unsigned int line_number);
-int getNumberOfArgs();
 void executeLineInstruction(stack_t**, unsigned int);
 
 void f_push(stack_t**, unsigned int);
@@ -61,5 +60,9 @@ void custom_pall(stack_t**, unsigned int);
 int line_checker(char *line, unsigned int line_number);
 void (*get_instruction_func(char *str))(stack_t**, unsigned int);
 
+/*Error functions*/
+
+void OpenFileError(char*);
+void UsageFileError();
 
 #endif
