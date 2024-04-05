@@ -32,11 +32,10 @@ void pall(stack_t **head)
  * node inside a stack
  * Return: nothing
  */
-void custom_pall(stack_t **head, unsigned int i)
+void custom_pall(stack_t **head)
 {
 	stack_t *tmpnode = NULL;
 
-	i = i - 1;
 	tmpnode = (*head);
 	while (tmpnode != NULL)
 	{

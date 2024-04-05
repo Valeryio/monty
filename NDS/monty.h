@@ -44,8 +44,8 @@ int getNumberOfArgs();
 void freeStack(stack_t**);
 char** getArguments(char*);
 int args_checker(char **, int);
-int isValidArgument(unsigned int line_number);
 void executeLineInstruction(stack_t**, unsigned int);
+int isValidArgument(stack_t**, unsigned int line_number);
 
 void f_push(stack_t**, unsigned int);
 void push(stack_t**, int);
@@ -56,7 +56,7 @@ void pint(stack_t**);
 void f_pall(stack_t**, unsigned int);
 void pall(stack_t**);
 
-void custom_pall(stack_t**, unsigned int);
+void custom_pall(stack_t**);
 int line_checker(char *line, unsigned int line_number);
 void (*get_instruction_func(char *str))(stack_t**, unsigned int);
 

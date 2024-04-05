@@ -17,7 +17,7 @@
  * | arguments[1] | str(int)) |
  * -------------- -------------
  */
-char **getArguments(char *line)
+char **getArgumentsi__old(char *line)
 {
 	int i;
 	char **arguments, *field, *separator;
@@ -42,6 +42,20 @@ char **getArguments(char *line)
 	return (arguments);
 }
 
+char **getArguments(char *line)
+{
+	int i = 0;
+	char *opcode = NULL, *arg = NULL;
+
+	if (sscanf(line, "%s %d", opcode, arg) == 1)
+	{
+		montyline_args
+
+	printf("Nous avons : %s %d\n", opcode, arg);
+	
+	if ()
+}
+
 /**
  * arg_detector - this function check if an argument exist
  * @str: the argument
@@ -50,7 +64,7 @@ char **getArguments(char *line)
  * Return: An integer
  */
 
-int isValidArgument(unsigned int line_number)
+int isValidArgument(stack_t **head, unsigned int line_number)
 {
 	int i = 0, known_arg = 0;
 	char *montyinstructions[] = {"push", "pall", "pint", "NULL"};
@@ -65,6 +79,10 @@ int isValidArgument(unsigned int line_number)
 	if (!known_arg)
 	{
 		printf("L%d: unkown instruction <%s>\n", line_number, montyline_args[0]);
+		freeStack(&(*head));
+		if ((*head))
+			printf("La stack est non nulle !\n");
+		custom_pall(&(*head));
 		exit(EXIT_FAILURE);
 	}
 

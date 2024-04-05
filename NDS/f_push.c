@@ -15,6 +15,7 @@ void f_push(stack_t **head, unsigned int line_number)
 	if ((getNumberOfArgs() < 2) || (atoi(montyline_args[1]) == 0))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		freeStack(&(*head));
 		exit(EXIT_FAILURE);
 	}
 

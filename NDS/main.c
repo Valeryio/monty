@@ -15,7 +15,7 @@ char **montyline_args = NULL;
 
 int main(int argc, char *argv[])
 {
-	unsigned int line_number = 1, arg_number = 0, right_arg = 0;
+	unsigned int line_number = 1;
 	FILE *myfile = NULL;
 	stack_t *head = NULL;
 	char instructionstring[2048] = "";
@@ -24,45 +24,42 @@ int main(int argc, char *argv[])
 	if (argc <= 1 || argc > 2)
 	{
 		UsageFileError();
-/*		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-*/	}
+	}
 
 /*Try to open the file*/
 	myfile = fopen(argv[1], "r");
 	if (!myfile)
 	{
 		OpenFileError(argv[1]);
-/*		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
-*/	}
+	}
 
 /*Getting each line of the file, get the variables, and use them*/
 	while (fgets(instructionstring, MAX_LENGTH, myfile))
 	{
 		montyline_args = getArguments(instructionstring);
-		arg_number = getNumberOfArgs();
 /*Continue if we're dealing with empty lines*/
-		if (arg_number == 0)
+		if (getNumberOfArgs() == 0)
 		{
 			line_number++;
 			printf("La ligne est vide\n");
 			continue;
 		}
 /*Verification of the validity of the opcode*/
-		right_arg = isValidArgument(line_number);
-		printf("%d-----------\n", right_arg);
-/*
-		if (!right_arg)
-		{
-			printf("L<%d>: unknown instruction <%s>\n", line_number, montyline_args[0]);
-			exit(EXIT_FAILURE);
-		}
-*/		printf("La ligne n'est pas vide, alors, continuons !\n");
+		isValidArgument(&head, line_number);
+
+		printf("La ligne n'est pas vide, alors, continuons !\n");
 		executeLineInstruction(&head, line_number);
 		line_number++;
 	}
 
 	fclose(myfile);
+	freeStack(&head);
+
+	for (line_number = 0; (int)line_number < getNumberOfArgs(); line_number++)
+		free(montyline_args[line_number]);
+
+	if (!head)
+		printf("Et bien, ma staack est vide !");
+
 	return (0);
 }
