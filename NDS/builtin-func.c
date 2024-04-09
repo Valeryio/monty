@@ -66,7 +66,7 @@ void getArguments(char *line)
 	if (result == 1)
 	{
 		printf("JE suis la apres la lecture\n");
-		montyline_args = (char **)malloc(2 * sizeof(char *));
+		montyline_args = (char **)malloc(1 * sizeof(char *));
 		mallocError(&(montyline_args));
 		montyline_args[0] = malloc(sizeof(char) * (strlen(opcode) + 1));
 		
@@ -77,7 +77,7 @@ void getArguments(char *line)
 	if (result == 2)
 	{
 		printf("JE suis la apres la lecture\n");
-		montyline_args = (char **)malloc(3 * sizeof(char *));
+		montyline_args = (char **)malloc(2 * sizeof(char *));
 		printf("J'essaie d'alloouoer de l'espace au double pointer\n");
 		
 		if (montyline_args == NULL)
@@ -112,8 +112,8 @@ void getArguments(char *line)
 
 		strcpy(montyline_args[0], opcode);
 		strcpy(montyline_args[1], arg);
-		montyline_args[2] = NULL;
-
+/*		montyline_args[2] = NULL;
+*/
 		if (!montyline_args[2])	
 			printf("LE dernier argument est bel et bien nul\n");
 		printf("C'est bon la-----------------------\n");
@@ -133,18 +133,26 @@ void getArguments(char *line)
 
 int isValidArgument(stack_t **head, unsigned int line_number)
 {
-	int i = 0, known_arg = 0;
+	int i = 0, known_arg = 0, result = 0;
 	char *montyinstructions[] = {"push", "pall", "pint", "NULL"};
 
-	printf("--------------JE SUIS LE VALIDATEUR------------\n")
+	printf("--------------JE SUIS LE VALIDATEUR------------\n");
+	printf("le fameux argument : %s\n", montyline_args[i]);
 
 	while (montyinstructions[i])
 	{
-		if (strcmp(montyinstructions[i], montyline_args[0]) == 0)
+		result = strcmp(montyinstructions[i], montyline_args[0]);
+		printf("Le resultat : %d\n", result);
+		/*if (strcmp(montyinstructions[i], montyline_args[0]) == 0)
+*/		if (result == 0)
+		{
 			known_arg = 1;
+			break;
+		}
 		i++;
 	}
 
+	printf("--------------PHASE DE VALIDATION 2 :------------\n");
 	if (!known_arg)
 	{
 		printf("L%d: unkown instruction <%s>\n", line_number, montyline_args[0]);
@@ -155,6 +163,7 @@ int isValidArgument(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
+	printf("--------------JE SORS DU VALIDATEUR------------\n");
 	return (0);
 }
 
