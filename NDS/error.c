@@ -27,3 +27,21 @@ void UsageFileError()
 	fprintf(stderr, "USAGE: monty file\n");
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * mallocError - error generated with a bad allocation of memory
+ * pMemory : (pointer) allocated space with the pointer
+ *
+ * Description: This function generates an error when a pointer is
+ * not well allocated
+ * Return: Nothing
+ */
+
+void mallocError(void **p)
+{
+	if ((*p) == NULL)
+	{
+		printf("Error: malloc failed");
+		exit(EXIT_FAILURE);
+	}
+}

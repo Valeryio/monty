@@ -17,7 +17,7 @@
  * | arguments[1] | str(int)) |
  * -------------- -------------
  */
-char **getArgumentsi__old(char *line)
+char **getArguments____isold(char *line)
 {
 	int i;
 	char **arguments, *field, *separator;
@@ -42,18 +42,85 @@ char **getArgumentsi__old(char *line)
 	return (arguments);
 }
 
-char **getArguments(char *line)
+void getArguments(char *line)
 {
-	int i = 0;
-	char *opcode = NULL, *arg = NULL;
+	int i = 0, result = 0;
+	char opcode[8], arg[2];
 
-	if (sscanf(line, "%s %d", opcode, arg) == 1)
+	printf("JE suis la et voici la taille %d\n", getNumberOfArgs());
+	while (i < getNumberOfArgs())
 	{
-		montyline_args
+		printf("JE suis la by freeing \n");
+		free(montyline_args[i]);
+		i++;
+	}
 
-	printf("Nous avons : %s %d\n", opcode, arg);
-	
-	if ()
+	printf("JE suis la apres le freeing\n");
+	free(montyline_args);
+	montyline_args = NULL;
+
+	printf("JE suis la apres le  super freeing\n");
+	result = sscanf(line, "%s %s", opcode, arg);
+
+	printf("THe reesult %d\n", result);
+	if (result == 1)
+	{
+		printf("JE suis la apres la lecture\n");
+		montyline_args = (char **)malloc(2 * sizeof(char *));
+		mallocError(&(montyline_args));
+		montyline_args[0] = malloc(sizeof(char) * (strlen(opcode) + 1));
+		
+		strcpy(montyline_args[0], opcode);
+		montyline_args[1] = NULL;
+	}
+
+	if (result == 2)
+	{
+		printf("JE suis la apres la lecture\n");
+		montyline_args = (char **)malloc(3 * sizeof(char *));
+		printf("J'essaie d'alloouoer de l'espace au double pointer\n");
+		
+		if (montyline_args == NULL)
+		{
+			printf("Error: malloc failed for double P");
+			exit(EXIT_FAILURE);
+		}
+		/*mallocError(&(*montyline_args));
+		*/printf("C'est reussi\n");
+
+		montyline_args[0] = NULL;
+		montyline_args[1] = NULL;
+		printf("J'essaie d'alloouoer de l'espace a index 1\n");
+		montyline_args[0] = malloc(sizeof(char) * (strlen(opcode) + 1));
+		/*mallocError(montyline_args[0]);
+		*/if (montyline_args[0] == NULL)
+		{
+			printf("Error: malloc failed for double P");
+		printf("le fameux argument : %s\n", montyline_args[i]);
+			exit(EXIT_FAILURE);
+		}
+		printf("C'est reussi\n");
+		printf("J'essaie d'alloouoer de l'espace a index 2\n");
+		montyline_args[1] = malloc(sizeof(char) * (strlen(arg) + 1));
+	/*	mallocError(montyline_args[1]);
+		*/if (montyline_args[1] == NULL)
+		{
+			printf("Error: malloc failed for double P");
+			exit(EXIT_FAILURE);
+		}
+		printf("C'est reussi\n");
+
+		strcpy(montyline_args[0], opcode);
+		strcpy(montyline_args[1], arg);
+		montyline_args[2] = NULL;
+
+		if (!montyline_args[2])	
+			printf("LE dernier argument est bel et bien nul\n");
+		printf("C'est bon la-----------------------\n");
+/*		printf("Nous avons : %s %s\n", opcode, arg);
+*/	}
+
+
 }
 
 /**
@@ -68,6 +135,8 @@ int isValidArgument(stack_t **head, unsigned int line_number)
 {
 	int i = 0, known_arg = 0;
 	char *montyinstructions[] = {"push", "pall", "pint", "NULL"};
+
+	printf("--------------JE SUIS LE VALIDATEUR------------\n")
 
 	while (montyinstructions[i])
 	{
@@ -99,11 +168,20 @@ int isValidArgument(stack_t **head, unsigned int line_number)
 
 int getNumberOfArgs()
 {
-	unsigned int i = 0;
-	if (montyline_args == NULL)
+	int i = 0;
+
+/*	printf("BOn, moi, je vais voir le nombre d'arguments!");
+		printf("le fameux argument : %s\n", montyline_args[i]);
+*/	if (montyline_args == NULL)
 		return (0);
+	printf("le fameux argument : %s\n", montyline_args[i]);
+	printf("le fameux argument : %s\n", montyline_args[i + 1]);
+	printf("le fameux argument : %s\n", montyline_args[i + 2]);
 	while (montyline_args[i] != NULL)
+	{
 		i++;
+	}
+	printf("IL m'a envoye han, et je suis : %d\n", i);
 	return (i);
 }
 

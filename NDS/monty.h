@@ -42,7 +42,7 @@ extern char **montyline_args;
 
 int getNumberOfArgs();
 void freeStack(stack_t**);
-char** getArguments(char*);
+void getArguments(char*);
 int args_checker(char **, int);
 void executeLineInstruction(stack_t**, unsigned int);
 int isValidArgument(stack_t**, unsigned int line_number);
@@ -64,5 +64,6 @@ void (*get_instruction_func(char *str))(stack_t**, unsigned int);
 
 void OpenFileError(char*);
 void UsageFileError();
+void mallocError();
 
 #endif
