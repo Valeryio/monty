@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <errno.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -43,6 +44,7 @@ extern char **montyline_args;
 int getNumberOfArgs();
 void freeStack(stack_t**);
 void getArguments(char*);
+int containString(char *);
 int args_checker(char **, int);
 void executeLineInstruction(stack_t**, unsigned int);
 int isValidArgument(stack_t**, unsigned int line_number);
