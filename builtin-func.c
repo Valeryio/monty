@@ -73,7 +73,7 @@ void getArguments(char *line)
 int isValidArgument(stack_t **head, unsigned int line_number)
 {
 	int i = 0, known_arg = 0, result = 0;
-	char *montyinstructions[] = {"push", "pall", "pint", "pop", "NULL"};
+	char *montyinstructions[] = {"push", "pall", "pint", "pop", "swap", "NULL"};
 
 	/*Verifying if the given argument is known*/
 	while (i < 4)
