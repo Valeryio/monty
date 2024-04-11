@@ -17,7 +17,8 @@ void sub(stack_t **head)
 	tmpnode = (*head);
 	(*head) = (*head)->next;
 
-	result = tmpnode->n - (*head)->n;
+/*	result = tmpnode->n - (*head)->n;*/
+	result = (*head)->n - tmpnode->n;
 	(*head)->n  = result;
 
 	free(tmpnode);
