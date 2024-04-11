@@ -18,6 +18,7 @@ void f_push(stack_t **head, unsigned int line_number)
 
 	printf("Voici le result : %d\n", stringChar);
 
+	printf("Arguments : %d\n", getNumberOfArgs());
 	if ((getNumberOfArgs() < 2) || (stringChar == -1))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);

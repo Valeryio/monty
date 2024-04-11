@@ -181,7 +181,7 @@ int containString(char *str)
 	if (!str)
 	{
 		printf("NULL string, cannot check of characters!\n");
-		exit(EXIT_FAILURE);
+		return (-1);
 	}
 
 	while (str[i] != '\0')
