@@ -30,7 +30,6 @@ void push(stack_t **head, int n)
 		newnode->next = NULL;
 		newnode->prev = NULL;
 		(*head) = newnode;
-		printf("J'ai ajoute : %d\n", n);
 		return;
 	}
 
@@ -38,5 +37,4 @@ void push(stack_t **head, int n)
 	newnode->prev = NULL;
 	newnode->next = (*head);
 	(*head) = newnode;
-	printf("J'ai ajoute : %d\n", n);
 }

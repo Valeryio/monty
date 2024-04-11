@@ -20,7 +20,7 @@
 /*UPDATED VERSION OF THE FUNCTION getArguments*/
 void getArguments(char *line)
 {
-	int i = 0, result = 0;
+	int i = 0, result = 0, nullptr = 1;
 	char opcode[8], arg[8];
 	/*Freeing the previous line arguments before adding new ones*/
 	while (i < getNumberOfArgs())
@@ -34,7 +34,7 @@ void getArguments(char *line)
 	result = sscanf(line, "%s %s", opcode, arg);
 	if (result == 1)
 	{
-		montyline_args = (char **)malloc(1 * sizeof(char *));
+		montyline_args = (char **)malloc((1 + nullptr) * sizeof(char *));
 		mallocError(&(montyline_args));
 		montyline_args[0] = malloc(sizeof(char) * (strlen(opcode) + 1));
 
@@ -44,11 +44,12 @@ void getArguments(char *line)
 
 	if (result == 2)
 	{
-		montyline_args = (char **)malloc(2 * sizeof(char *));
+		montyline_args = (char **)malloc((2 + nullptr) * sizeof(char *));
 		mallocError(&(montyline_args));
 
 		montyline_args[0] = NULL;
 		montyline_args[1] = NULL;
+		montyline_args[2] = NULL;
 		montyline_args[0] = malloc(sizeof(char) * (strlen(opcode) + 1));
 		mallocError(&montyline_args[0]);
 		montyline_args[1] = malloc(sizeof(char) * (strlen(arg) + 1));
@@ -77,7 +78,6 @@ int isValidArgument(stack_t **head, unsigned int line_number)
 	while (i < 3)
 	{
 		result = strcmp(montyinstructions[i], montyline_args[0]);
-		printf("Le resultat : %d\n", result);
 		if (result == 0)
 		{
 			known_arg = 1;
@@ -112,7 +112,7 @@ int getNumberOfArgs(void)
 
 	if (montyline_args == NULL)
 		return (0);
-	while (montyline_args[i] != NULL)
+	while (montyline_args[i])
 	{
 		i++;
 	}

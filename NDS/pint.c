@@ -2,8 +2,7 @@
 
 /**
  * pint - print an element
- * @stack: the stack
- * @n: the line number
+ * @head: the stack
  *
  * Description: This function prints the top
  * element of a stack
@@ -13,12 +12,9 @@
 void pint(stack_t **head)
 {
 	stack_t *tmpnode = NULL;
-/*
-	if (!(*head))
-		fprintf(stderr, "L%d: can't pint, stack empty", i);
-*/
+
 	tmpnode = (*head);
-	while(tmpnode->next)
+	while (tmpnode->next)
 		tmpnode = tmpnode->next;
 
 	printf("%d\n", tmpnode->n);

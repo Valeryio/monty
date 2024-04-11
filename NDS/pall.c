@@ -4,8 +4,6 @@
  * pall - show all the elements of a stack
  *
  * @head: the head of the stack
- * @n: an integer
- * @line_number: the line number
  * Description: This function shows all the
  * node inside a stack
  * Return: nothing
@@ -27,7 +25,6 @@ void pall(stack_t **head)
  * custom_pall - show all the elements of a stack
  *
  * @head: the head of the stack
- * @i: an integer
  * Description: This function shows all the
  * node inside a stack
  * Return: nothing

@@ -42,7 +42,7 @@ void mallocError(void **p)
 {
 	if ((*p) == NULL)
 	{
-		printf("Error: malloc failed");
+		printf("Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 }
