@@ -48,10 +48,10 @@ int main(int argc, char *argv[])
 
 	/*Freeing all the memory allocated*/
 	fclose(myfile);
-	/*freeStack(&head);
+	freeStack(&head);
 	for (line_number = 0; (int)line_number < getNumberOfArgs(); line_number++)
 		free(montyline_args[line_number]);
-	free(montyline_args);*/
+	free(montyline_args);
 /*
 	freeprog(&head);
 */
