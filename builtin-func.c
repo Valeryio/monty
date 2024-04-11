@@ -85,11 +85,12 @@ int isValidArgument(stack_t **head, unsigned int line_number)
 		}
 		i++;
 	}
-
+	/*Line_num... is a long word, let's reuse result to have a line lenght <= 80*/
+	result = line_number;
 	if (!known_arg)
 	{
 	/*Free the stack and exit the program if the arguments is not known*/
-		fprintf(stderr, "L%d:unknown instruction %s\n", line_number, montyline_args[0]);
+		fprintf(stderr, "L%d: unknown instruction %s\n", result, montyline_args[0]);
 		freeStack(&(*head));
 		exit(EXIT_FAILURE);
 	}
