@@ -3,6 +3,7 @@
 /**
  * OpenFileError - error generated with bad open file
  *
+ * @str: (str), the name of the file to open
  * Description: This function is in reality an implementation
  * of an Error that end the program when the program encounter
  * an error when opening the given monty's program file
@@ -22,7 +23,7 @@ void OpenFileError(char *str)
  * to the monty's interpretor.
  */
 
-void UsageFileError()
+void UsageFileError(void)
 {
 	fprintf(stderr, "USAGE: monty file\n");
 	exit(EXIT_FAILURE);
@@ -30,7 +31,7 @@ void UsageFileError()
 
 /**
  * mallocError - error generated with a bad allocation of memory
- * pMemory : (pointer) allocated space with the pointer
+ * @p : (pointer) allocated space with the pointer
  *
  * Description: This function generates an error when a pointer is
  * not well allocated

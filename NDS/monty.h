@@ -47,7 +47,7 @@ void getArguments(char*);
 int containString(char *);
 int args_checker(char **, int);
 void executeLineInstruction(stack_t**, unsigned int);
-int isValidArgument(stack_t**);
+int isValidArgument(stack_t**, unsigned int line_number);
 
 void f_push(stack_t**, unsigned int);
 void push(stack_t**, int);
