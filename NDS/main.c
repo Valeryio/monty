@@ -1,7 +1,6 @@
 #include "monty.h"
 #define MAX_LENGTH 2048
 
-stack_t *montystack = NULL;
 char **montyline_args = NULL;
 
 /**
@@ -25,49 +24,33 @@ int main(int argc, char *argv[])
 	{
 		UsageFileError();
 	}
-
-/*Try to open the file*/
+	/*Try to open the file*/
 	myfile = fopen(argv[1], "r");
 	if (!myfile)
 	{
 		OpenFileError(argv[1]);
 	}
-
-/*Getting each line of the file, get the variables, and use them*/
+	/*Getting each line of the file, get the variables, and use them*/
 	while (fgets(instructionstring, MAX_LENGTH, myfile))
 	{
 		getArguments(instructionstring);
-/*		printf("Et bien on a : %s et %s sur cette ligne !\n", montyline_args[0], montyline_args[1]);
-		montyline_args = getArguments(instructionstring);*/
-/*Continue if we're dealing with empty lines*/
+	/*Continue if we're dealing with empty lines*/
 		if (getNumberOfArgs() == 0)
 		{
-/*		printf("Et bien on a : %s et %s sur cette ligne !\n", montyline_args[0], montyline_args[1]);
-*/			line_number++;
-			printf("La ligne est vide\n");
+			line_number++;
 			continue;
 		}
-		printf("Eya: %s et %s sur cette ligne !\n", montyline_args[0], montyline_args[1]);
-/*Verification of the validity of the opcode*/
+		/*Verification of the validity of the opcode*/
 		isValidArgument(&head, line_number);
-
-		printf("La ligne %d  n'est pas vide, alors, continuons !\n", line_number);
 		executeLineInstruction(&head, line_number);
 		line_number++;
-		printf("Eya: %s et %s, ligne suivante\n", montyline_args[0], montyline_args[1]);
 	}
 
-	printf("Terminus, tout le monde descend\n");
-
+	/*Freeing all the memory allocated*/
 	fclose(myfile);
 	freeStack(&head);
-
 	for (line_number = 0; (int)line_number < getNumberOfArgs(); line_number++)
 		free(montyline_args[line_number]);
 	free(montyline_args);
-	montyline_args = NULL;
-	if (!head)
-		printf("Et bien, ma staack est vide !");
-
 	return (0);
 }
