@@ -89,7 +89,7 @@ int isValidArgument(stack_t **head, unsigned int line_number)
 	if (!known_arg)
 	{
 	/*Free the stack and exit the program if the arguments is not known*/
-		printf("L%d: unkown instruction <%s>\n", line_number, montyline_args[0]);
+		printf("L%d: unkown instruction %s\n", line_number, montyline_args[0]);
 		freeStack(&(*head));
 		exit(EXIT_FAILURE);
 	}
