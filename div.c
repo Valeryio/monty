@@ -11,14 +11,14 @@
 
 void divs(stack_t **head)
 {
-	int result = 0;
+	float result = 0;
 	stack_t *tmpnode = NULL;
 
 	tmpnode = (*head);
 	(*head) = (*head)->next;
 
-	result = tmpnode->n / (*head)->n;
-	(*head)->n  = result;
+	result = (float)(*head)->n / (float)tmpnode->n;
+	(*head)->n  = (int) result;
 
 	free(tmpnode);
 }
