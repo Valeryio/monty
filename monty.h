@@ -41,6 +41,7 @@ typedef struct instruction_s
  */
 extern char **montyline_args;
 
+int freeprog(stack_t**);
 int getNumberOfArgs();
 void freeStack(stack_t**);
 void getArguments(char*);

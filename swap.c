@@ -20,6 +20,4 @@ void swap(stack_t **head)
 	tmp = (*head)->n;
 	(*head)->n = tmpnode->n;
 	tmpnode->n = tmp;
-
-	printf("%d\n", tmpnode->n);
 }
