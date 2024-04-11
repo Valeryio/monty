@@ -19,6 +19,7 @@ void executeLineInstruction(stack_t **stack_head, unsigned int line_number)
 						{"pint", f_pint},
 						{"swap", f_swap},
 						{"pop", f_pop},
+						{"nop", f_nop},
 						{"NULL", NULL}
 					};
 
