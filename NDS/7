@@ -34,10 +34,10 @@ void getArguments(char *line)
 	result = sscanf(line, "%s %s", opcode, arg);
 	if (result == 1)
 	{
-		montyline_args = (char **)malloc(1 * sizeof(char *));
+		montyline_ar0gs = (char **)malloc(1 * sizeof(char *));
 		mallocError(&(montyline_args));
 		montyline_args[0] = malloc(sizeof(char) * (strlen(opcode) + 1));
-
+		
 		strcpy(montyline_args[0], opcode);
 		montyline_args[1] = NULL;
 	}
@@ -57,39 +57,39 @@ void getArguments(char *line)
 		strcpy(montyline_args[0], opcode);
 		strcpy(montyline_args[1], arg);
 	}
+
 }
 
 /**
  * arg_detector - this function check if an argument exist
- * @head: (stack), the stack to use
- * @line_number: (int), the line number of the monty file
+ * @str: the argument
  *
- * Description: This function verifies if the instruction
- * on the line, is known, and if it's valid
+ * Description: 
  * Return: An integer
  */
 
-int isValidArgument(stack_t **head)
+int isValidArgument(stack_t **head, unsigned int line_number)
 {
 	int i = 0, known_arg = 0, result = 0;
 	char *montyinstructions[] = {"push", "pall", "pint", "NULL"};
 
-	/*Verify if the instruction is known*/
+	printf("----------------VALIDATION-------------------\n");
 	while (i < 3)
 	{
 		result = strcmp(montyinstructions[i], montyline_args[0]);
+		printf("Le resultat : %d\n", result);
 		if (result == 0)
 		{
-	/*Break if the instruction is known*/
 			known_arg = 1;
 			break;
 		}
 		i++;
 	}
-
 	if (!known_arg)
 	{
 		freeStack(&(*head));
+		if ((*head))
+			printf("La stack est non nulle !\n");
 		exit(EXIT_FAILURE);
 	}
 	printf("----------------VALIDATION- OUT -------------------\n");
@@ -98,14 +98,14 @@ int isValidArgument(stack_t **head)
 }
 
 /**
- * getNumberOfArgs - count the number of args
+ * numberofargs - count the number of args
  *
  * Description: This function counts the number of args in
  * a monty line datastructure (array of strings)
  * Return: An integer
  */
 
-int getNumberOfArgs(void)
+int getNumberOfArgs()
 {
 	int i = 0;
 
@@ -158,4 +158,36 @@ int containString(char *str)
 		i++;
 	}
 	return (result);
+}
+
+
+
+/**
+ * args_checker - check each arguments of a monty's line
+ * @args: a array of args
+ * @length: the length of the arrray
+ *
+ * Description: This function check each args of a line
+ * and send its result
+ * Return: 1 on success, 0 otherwise
+ */
+
+int args_checker(char *args[], int length)
+{
+
+/*	length = length - 1;
+*/
+	printf("JE suis la et ma taille est : %d\n", length);
+
+/*Check for bad entry for push*/
+	if (!strcmp(args[0], "push") && (length == 1))
+		return (0);
+	if (!strcmp(args[0], "push") && (atoi(args[1]) == 0))
+		return (0);
+
+/*Check for pall function*/
+	if (!strcmp(args[0], "pall") && (args[1] != 0))
+		return (0);
+
+	return (1);
 }

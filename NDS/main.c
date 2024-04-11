@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 			continue;
 		}
 		/*Verification of the validity of the opcode*/
-		isValidArgument(&head, line_number);
+		isValidArgument(&head);
 		executeLineInstruction(&head, line_number);
 		line_number++;
 	}
