@@ -22,6 +22,7 @@ void executeLineInstruction(stack_t **stack_head, unsigned int line_number)
 						{"nop", f_nop},
 						{"add", f_add},
 						{"sub", f_sub},
+						{"div", f_div},
 						{"NULL", NULL}
 					};
 

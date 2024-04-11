@@ -74,6 +74,9 @@ void add(stack_t**);
 void f_sub(stack_t**, unsigned int);
 void sub(stack_t**);
 
+void f_div(stack_t**, unsigned int);
+void divs(stack_t**);
+
 void custom_pall(stack_t**);
 int getStackLength(stack_t**);
 int line_checker(char *line, unsigned int line_number);
