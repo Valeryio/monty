@@ -65,6 +65,9 @@ void pop(stack_t**);
 void f_swap(stack_t**, unsigned int);
 void swap(stack_t**);
 
+void f_nop(stack_t**, unsigned int);
+void nop(void);
+
 void custom_pall(stack_t**);
 int getStackLength(stack_t**);
 int line_checker(char *line, unsigned int line_number);
