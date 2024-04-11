@@ -14,10 +14,11 @@ void f_swap(stack_t **head, unsigned int line_number)
 {
 	if ((*head) == NULL)
 	{
-		fprintf(stderr, "L%d: can't swap, stack empty\n", line_number);
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	if ((*head) == NULL)
+/*	printf("Longueur de la stack : %d\n", getStackLength(&(*head)));*/
+	if (getStackLength(&(*head)) < 2)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);

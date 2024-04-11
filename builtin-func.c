@@ -76,7 +76,7 @@ int isValidArgument(stack_t **head, unsigned int line_number)
 	char *montyinstructions[] = {"push", "pall", "pint", "pop", "swap", "NULL"};
 
 	/*Verifying if the given argument is known*/
-	while (i < 4)
+	while (i < 5)
 	{
 		result = strcmp(montyinstructions[i], montyline_args[0]);
 		if (result == 0)
@@ -156,4 +156,31 @@ int containString(char *str)
 		i++;
 	}
 	return (result);
+}
+
+
+/**
+ * getStackLength - get the length of the stack
+ *
+ * @head: the stack
+ * Description: This function gets the length of the stack
+ * Return: An integer
+ */
+
+int getStackLength(stack_t **head)
+{
+	int length = 0;
+	stack_t *tmpnode = NULL;
+
+	if ((*head) == NULL)
+		return (0);
+
+	tmpnode = (*head);
+	while(tmpnode)
+	{
+		length++;
+		tmpnode = tmpnode->next;
+	}
+
+	return (length);
 }

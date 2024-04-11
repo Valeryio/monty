@@ -65,6 +65,7 @@ void f_swap(stack_t**, unsigned int);
 void swap(stack_t**);
 
 void custom_pall(stack_t**);
+int getStackLength(stack_t**);
 int line_checker(char *line, unsigned int line_number);
 void (*get_instruction_func(char *str))(stack_t**, unsigned int);
 
