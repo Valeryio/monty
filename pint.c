@@ -14,8 +14,5 @@ void pint(stack_t **head)
 	stack_t *tmpnode = NULL;
 
 	tmpnode = (*head);
-	while (tmpnode->next)
-		tmpnode = tmpnode->next;
-
 	printf("%d\n", tmpnode->n);
 }

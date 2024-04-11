@@ -16,6 +16,7 @@ void executeLineInstruction(stack_t **stack_head, unsigned int line_number)
 	instruction_t montyinstructions[] = {
 						{"push", f_push},
 						{"pall", f_pall},
+						{"pint", f_pint},
 						{"NULL", NULL}
 					};
 

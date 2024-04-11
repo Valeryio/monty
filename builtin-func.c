@@ -1,4 +1,5 @@
 #include "monty.h"
+#define MAX_LENGTH 256
 
 /**
  * getArguments - get the two arguments of monty code
@@ -21,7 +22,7 @@
 void getArguments(char *line)
 {
 	int i = 0, result = 0, nullptr = 1;
-	char opcode[8], arg[8];
+	char opcode[MAX_LENGTH], arg[MAX_LENGTH];
 	/*Freeing the previous line arguments before adding new ones*/
 	while (i < getNumberOfArgs())
 	{
@@ -31,7 +32,7 @@ void getArguments(char *line)
 	free(montyline_args);
 	montyline_args = NULL;
 	/*Getting a new line*/
-	result = sscanf(line, "%s %s", opcode, arg);
+	result = sscanf(line, " %s %s", opcode, arg);
 	if (result == 1)
 	{
 		montyline_args = (char **)malloc((1 + nullptr) * sizeof(char *));
