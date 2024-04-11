@@ -14,7 +14,7 @@ void f_nop(stack_t **head, unsigned int line_number)
 	line_number++;
 	if ((*head) == NULL)
 	{
-		exit(EXIT_FAILURE);
+		line_number++;
 	}
 	nop();
 }
