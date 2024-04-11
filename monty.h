@@ -58,6 +58,12 @@ void pint(stack_t**);
 void f_pall(stack_t**, unsigned int);
 void pall(stack_t**);
 
+void f_pop(stack_t**, unsigned int);
+void pop(stack_t**);
+
+void f_swap(stack_t**, unsigned int);
+void swap(stack_t**);
+
 void custom_pall(stack_t**);
 int line_checker(char *line, unsigned int line_number);
 void (*get_instruction_func(char *str))(stack_t**, unsigned int);
