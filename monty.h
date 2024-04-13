@@ -84,6 +84,9 @@ void mul(stack_t**);
 void f_mod(stack_t**, unsigned int);
 void mod(stack_t**);
 
+void f_pchar(stack_t**, unsigned int);
+void pchar(stack_t**);
+
 void custom_pall(stack_t**);
 int getStackLength(stack_t**);
 int line_checker(char *line, unsigned int line_number);
