@@ -80,6 +80,12 @@ int isValidArgument(stack_t **head, unsigned int line_number)
 	while (i < 9)
 	{
 		result = strcmp(montyinstructions[i], montyline_args[0]);
+		if ('#' == montyline_args[0][0])
+		{
+			f_nop(&(*head), line_number);
+			known_arg = 1;
+			break;
+		}
 		if (result == 0)
 		{
 			known_arg = 1;

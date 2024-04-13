@@ -24,7 +24,7 @@ void f_div(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	if (montyline_args[1] == 0)
+	if ((*head)->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
