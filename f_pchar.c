@@ -22,5 +22,5 @@ void f_pchar(stack_t **head, unsigned int line_number)
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	pint(&(*head));
+	pchar(&(*head));
 }
