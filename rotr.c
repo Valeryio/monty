@@ -9,7 +9,7 @@
  * Return: Nothing
  */
 
-void rotl(stack_t **head)
+void rotr(stack_t **head)
 {
 	stack_t *tmpnode = NULL;
 	int tmp = 0;
@@ -17,14 +17,15 @@ void rotl(stack_t **head)
 	if ((*head) == NULL)
 		return;
 
-	tmp = (*head)->n;
 	tmpnode = (*head);
 
 	while (tmpnode->next)
 	{
-		tmpnode->n = tmpnode->next->n;
+		if (tmpnode->next->next == NULL)
+			tmp = tmpnode->next->n;
+		tmpnode->next->n = tmpnode->n;
 		tmpnode = tmpnode->next;
 	}
 	
-	tmpnode->n = (unsigned int) tmp;
+	(*head)->n = (unsigned int) tmp;
 }

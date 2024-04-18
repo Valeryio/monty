@@ -93,6 +93,9 @@ void pstr(stack_t**);
 void f_rotl(stack_t**, unsigned int);
 void rotl(stack_t**);
 
+void f_rotr(stack_t**, unsigned int);
+void rotr(stack_t**);
+
 void custom_pall(stack_t**);
 int getStackLength(stack_t**);
 int line_checker(char *line, unsigned int line_number);
