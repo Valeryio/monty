@@ -21,11 +21,17 @@ void pstr(stack_t **head)
 
 /*1 - Stop when the value of the elementt is 0*/
 		if (c[0] == 0)
+		{
+			printf("\n");
 			return;
+		}
 
 /*2 - stop when the value of the element is not in ASCII table*/
 		if (c[0] > 127 || c[0] < 0)
+		{
+			printf("\n");
 			return;
+		}
 
 /*3 - Print the right character*/
 		printf("%c", c[0]);
