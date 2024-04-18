@@ -19,7 +19,6 @@ void f_pchar(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	printf("Nous avons c : %d\n", c);
 	if (c > 127 || c < 0)
 	{
 	fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
