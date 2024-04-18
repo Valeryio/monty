@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * rotl - this function rotl a stack
+ * rotr - this function rotl a stack
  *
  * @head: (stack), the stack to use
  * Description: This function rotl the stack given
@@ -26,6 +26,6 @@ void rotr(stack_t **head)
 		tmpnode->next->n = tmpnode->n;
 		tmpnode = tmpnode->next;
 	}
-	
+
 	(*head)->n = (unsigned int) tmp;
 }

@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * div - div two elements of a stack
+ * divs - div two elements of a stack
  * @head: the stack
  *
  * Description: This function div two elements at the top of a

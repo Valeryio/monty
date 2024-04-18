@@ -25,6 +25,6 @@ void rotl(stack_t **head)
 		tmpnode->n = tmpnode->next->n;
 		tmpnode = tmpnode->next;
 	}
-	
+
 	tmpnode->n = (unsigned int) tmp;
 }

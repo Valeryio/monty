@@ -4,7 +4,6 @@
  * pstr - print a string from a stack
  *
  * @head: the stack to use
- * @line_number: verifications to do on the line
  * Description: This function prints a string from a stack
  * Return: Nothing
  */

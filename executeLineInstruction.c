@@ -21,6 +21,7 @@ void executeLineInstruction(stack_t **stack_head, unsigned int line_number)
 						{"swap", f_swap},
 						{"pstr", f_pstr},
 						{"rotl", f_rotl},
+						{"rotr", f_rotr},
 						{"pop", f_pop},
 						{"nop", f_nop},
 						{"add", f_add},

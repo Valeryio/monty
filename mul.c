@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * mull - add two elements of a stack
+ * mul - add two elements of a stack
  * @head: the stack
  *
  * Description: This function mul two elements at the top of a
