@@ -1,2 +1,1 @@
-push 128
-pstr
+rotl
