@@ -17,6 +17,9 @@ void rotl(stack_t **head)
 	if ((*head) == NULL)
 		return;
 
+	if ((*head)->next == NULL)
+		return;
+
 	tmp = (*head)->n;
 	tmpnode = (*head);
 

@@ -17,6 +17,9 @@ void rotr(stack_t **head)
 	if ((*head) == NULL)
 		return;
 
+	if ((*head)->next == NULL)
+		return;
+
 	tmpnode = (*head);
 
 	while (tmpnode->next)
