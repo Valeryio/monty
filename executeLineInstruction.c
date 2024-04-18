@@ -19,6 +19,7 @@ void executeLineInstruction(stack_t **stack_head, unsigned int line_number)
 						{"pall", f_pall},
 						{"pint", f_pint},
 						{"swap", f_swap},
+						{"pstr", f_pstr},
 						{"pop", f_pop},
 						{"nop", f_nop},
 						{"add", f_add},
@@ -37,6 +38,7 @@ void executeLineInstruction(stack_t **stack_head, unsigned int line_number)
 		return;
 	}
 
+/*Call the right function to execute the line*/
 	while (montyinstructions[i].opcode)
 	{
 		if (strcmp(montyinstructions[i].opcode, montyline_args[0]) == 0)

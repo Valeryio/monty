@@ -1,11 +1,11 @@
 #include "monty.h"
 
 /**
- * f_pchar - pint a stack
+ * f_pchar - print a char
  *
  * @head: the stack to use
  * @line_number: verifications to do on the line
- * Description: This function prints the char of the top elements of a stack
+ * Description: This function prints the char of a node integer if valable
  * Return: Nothing
  */
 

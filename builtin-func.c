@@ -74,7 +74,7 @@ int isValidArgument(stack_t **head, unsigned int line_number)
 {
 	int i = 0, known_arg = 0, result = 0;
 	char *montyinstructions[] = {"push", "pall", "pint", "pop", "swap", "nop", "add", 
-				"sub", "div", "mul", "mod", "pchar", "NULL"};
+				"sub", "div", "mul", "mod", "pchar", "pstr", "NULL"};
 
 	/*Verifying if the given argument is known*/
 	while (i < 12)
