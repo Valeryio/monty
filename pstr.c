@@ -28,7 +28,8 @@ void pstr(stack_t **head)
 			return;
 
 /*3 - Print the right character*/
-		printf("%c\n", c[0]);
+		printf("%c", c[0]);
 		tmpnode = tmpnode->next;
 	}
+	printf("\n");
 }

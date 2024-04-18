@@ -77,7 +77,7 @@ int isValidArgument(stack_t **head, unsigned int line_number)
 				"sub", "div", "mul", "mod", "pchar", "pstr", "NULL"};
 
 	/*Verifying if the given argument is known*/
-	while (i < 12)
+	while (i < 13)
 	{
 		result = strcmp(montyinstructions[i], montyline_args[0]);
 		if ('#' == montyline_args[0][0])
