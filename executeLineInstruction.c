@@ -12,7 +12,7 @@
 
 void executeLineInstruction(stack_t **stack_head, unsigned int line_number)
 {
-	int i = 0;
+	int i = 0, cmp_result = 0;
 	instruction_t montyinstructions[] = {
 						{"pchar", f_pchar},
 						{"push", f_push},
@@ -28,6 +28,14 @@ void executeLineInstruction(stack_t **stack_head, unsigned int line_number)
 						{"mod", f_mod},
 						{"NULL", NULL}
 					};
+
+	cmp_result = montyline_args[0][0] == '#';
+/*Do nothing if the line is commented with '#' */
+	if (cmp_result == 1)
+	{
+		f_nop(&(*stack_head), line_number);
+		return;
+	}
 
 	while (montyinstructions[i].opcode)
 	{
