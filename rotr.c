@@ -12,7 +12,7 @@
 void rotr(stack_t **head)
 {
 	stack_t *tmpnode = NULL;
-	int tmp = 0;
+	int tmp = 0, saved = 0;
 
 	if ((*head) == NULL)
 		return;
@@ -21,14 +21,16 @@ void rotr(stack_t **head)
 		return;
 
 	tmpnode = (*head);
+	tmp = tmpnode->n;
+	tmpnode = tmpnode->next;
 
-	while (tmpnode->next)
+	while (tmpnode)
 	{
-		if (tmpnode->next->next == NULL)
-			tmp = tmpnode->next->n;
-		tmpnode->next->n = tmpnode->n;
+		saved = tmpnode->n;
+		tmpnode->n = tmp;
+
+		tmp = saved;
 		tmpnode = tmpnode->next;
 	}
-
 	(*head)->n = (unsigned int) tmp;
 }
