@@ -96,6 +96,11 @@ void rotl(stack_t**);
 void f_rotr(stack_t**, unsigned int);
 void rotr(stack_t**);
 
+void f_stack(stack_t**, unsigned int);
+
+void f_queue(stack_t**, unsigned int);
+void queue(stack_t**);
+
 void custom_pall(stack_t**);
 int getStackLength(stack_t**);
 int line_checker(char *line, unsigned int line_number);

@@ -75,10 +75,11 @@ int isValidArgument(stack_t **head, unsigned int line_number)
 	int i = 0, known_arg = 0, result = 0;
 	char *montyinstructions[] = {"push", "pall", "pint", "pop", "swap",
 				"nop", "add", "sub", "div", "mul", "mod",
-				"pchar", "pstr", "rotl", "rotr", "NULL"};
+				"pchar", "pstr", "rotl", "rotr", "stack",
+				"queue", "NULL"};
 
 	/*Verifying if the given argument is known*/
-	while (i < 15)
+	while (i < 17)
 	{
 		result = strcmp(montyinstructions[i], montyline_args[0]);
 		if ('#' == montyline_args[0][0])
