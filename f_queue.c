@@ -19,5 +19,6 @@ void f_queue(stack_t **head, unsigned int line_number)
 		return;
 	}
 
-	queue(&(*head));
+	nop();
+/*	queue(&(*head));*/
 }

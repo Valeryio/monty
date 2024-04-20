@@ -1,9 +1,4 @@
-push 1
-push 2
-push 3
-push 4
-push 5
-stack
-pall
-queue
+push 98
+push 897
+queue Holberton
 pall
