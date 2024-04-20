@@ -19,6 +19,10 @@ void f_queue(stack_t **head, unsigned int line_number)
 		return;
 	}
 
-	nop();
-/*	queue(&(*head));*/
+	if (getStackLength(&(*head)) > 2)
+		queue(&(*head));
+	else
+	{
+		nop();
+	}
 }
